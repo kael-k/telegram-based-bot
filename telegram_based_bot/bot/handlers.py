@@ -17,6 +17,7 @@ def update_handler(update: Update, _: CallbackContext):
         log.debug("No message found in chat message...")
         return
 
+    message = message.lower()
     if any(e in message for e in ["chad", "based"]):
         asset_chad = get_random_asset_chad()
         asset_chad.send(update.effective_message)

@@ -8,7 +8,7 @@
 
 A Telegram bot that send a random gif/message/image of chad if a `based` or `chad` word is detected.
 
-An already built container image is available on [Docker Hub](https://hub.docker.com/r/kaelk/telegram-webdav-integration-bot).
+An already built container image is available on [Docker Hub](https://hub.docker.com/r/kaelk/telegram-based-bot).
 
 ## Usage
 First, you'll need to setup a bot on telegram https://core.telegram.org/bots#3-how-do-i-create-a-bot.
@@ -19,7 +19,7 @@ podman run \
     -e TELEGRAM_BOT_TOKEN="<my-sercet-token>" \
     -e TELEGRAM_BOT_CHAT_IDS="[<chatid1>[;<chatid2>;<...>;<chatidn>]]" \
     -e ENABLE_DEBUG "(0|1)" \
-    kaelk/telegram-webdav-integration-bot
+    kaelk/telegram-based-bot
 ```
 
 * `ENABLE_DEBUG` by default is "0", i you do not need debug you can omit the env

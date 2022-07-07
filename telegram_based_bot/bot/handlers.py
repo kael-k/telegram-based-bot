@@ -18,6 +18,6 @@ def update_handler(update: Update, _: CallbackContext):
         return
 
     message = message.lower()
-    if any(e in message for e in ["chad", "based"]):
+    if any(e in message for e in env_config.TELEGRAM_BOT_BASED_KEYWORDS):
         asset_chad = get_random_asset_chad()
         asset_chad.send(update.effective_message)

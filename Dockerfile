@@ -9,5 +9,6 @@ RUN apk add gcc py3-cffi libffi-dev musl-dev openssl openssl-dev && \
 
 ENV TELEGRAM_BOT_TOKEN ""
 ENV TELEGRAM_BOT_CHAT_IDS ""
+ENV TELEGRAM_BOT_BASED_KEYWORDS "based;chad"
 
 ENTRYPOINT ["python", "-m", "telegram_based_bot"]

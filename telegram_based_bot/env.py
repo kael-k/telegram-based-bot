@@ -7,7 +7,7 @@ class EnvironmentConfig:
     This class can be instantiated everywhere in the program to loads the environment parameters
     """
 
-    TELEGRAM_BOT_CHAT_IDS_DELIMITER = ";"
+    ENV_DELIMITER = ";"
 
     def __init__(self):
         self.TELEGRAM_BOT_TOKEN = environ.get("TELEGRAM_BOT_TOKEN")
@@ -18,8 +18,18 @@ class EnvironmentConfig:
         self.TELEGRAM_BOT_CHAT_IDS = None
         if chat_ids := environ.get("TELEGRAM_BOT_CHAT_IDS"):
             self.TELEGRAM_BOT_CHAT_IDS = [
-                int(i) for i in chat_ids.split(self.TELEGRAM_BOT_CHAT_IDS_DELIMITER)
+                int(i) for i in chat_ids.split(self.ENV_DELIMITER)
             ]
+
+        # based keyword
+        self.TELEGRAM_BOT_BASED_KEYWORDS = []
+        if chat_ids := environ.get("TELEGRAM_BOT_BASED_KEYWORDS"):
+            self.TELEGRAM_BOT_BASED_KEYWORDS = [
+                keyword.lower() for keyword in chat_ids.split(self.ENV_DELIMITER)
+            ]
+
+        if not self.TELEGRAM_BOT_BASED_KEYWORDS:
+            raise EnvironmentError("No TELEGRAM_BOT_BASED_KEYWORDS set")
 
         self.ENABLE_DEBUG = environ.get("ENABLE_DEBUG", "").lower() in [
             "1",

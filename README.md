@@ -6,7 +6,7 @@
 [![Code style: flake8](https://img.shields.io/badge/flake8-3.9.0-orange?style=flat-square)](https://github.com/PyCQA/flake8)
 
 
-A Telegram bot that sends a random gif/message/image of chad if a `based` or `chad` word is detected.
+A Telegram bot that sends a random gif/message/image of chad if a `based` or `chad` word is detected (or a given list in `TELEGRAM_BOT_BASED_KEYWORDS` environment).
 
 An already built container image is available on [Docker Hub](https://hub.docker.com/r/kaelk/telegram-based-bot).
 
@@ -18,6 +18,7 @@ After you've generated the token, you can run the software via podman/docker (or
 podman run \
     -e TELEGRAM_BOT_TOKEN="<my-sercet-token>" \
     -e TELEGRAM_BOT_CHAT_IDS="[<chatid1>[;<chatid2>;<...>;<chatidn>]]" \
+    -e TELEGRAM_BOT_BASED_KEYWORDS="[<keyword1>[;<keyword2>;<...>;<keywordn>]]" \
     -e ENABLE_DEBUG "(0|1)" \
     kaelk/telegram-based-bot
 ```
@@ -25,6 +26,8 @@ podman run \
 * `ENABLE_DEBUG` by default is "0", if you do not need debug you can omit the env
 * also `TELEGRAM_BOT_CHAT_IDS` is optional, however this means that **EVERYONE** can send a message to the bot
 and they will **ALL** be processed
+* `TELEGRAM_BOT_BASED_KEYWORDS` a list of based keywords (separated by `;`), default in the Dockerfile are
+`based` and `chad`
 
 ## Build
 
